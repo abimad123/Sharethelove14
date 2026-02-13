@@ -377,7 +377,8 @@ const App: React.FC = () => {
                 className="text-xl md:text-2xl text-rose-500 font-semibold leading-relaxed" 
                 speed={0.04}
                 delay={0.8}
-              />
+              /><span>Send the screenshot Abi</span>
+
             </div>
             <MotionButton whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={handleStartOver} className="clay-btn-reset px-8 py-4 text-white rounded-[25px] font-bold flex items-center justify-center gap-2 mx-auto shadow-lg"><RefreshCw size={20} /> Start Over</MotionButton>
             <div className="flex justify-center gap-5 mt-12">
