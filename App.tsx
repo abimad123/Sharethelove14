@@ -219,7 +219,7 @@ const App: React.FC = () => {
   ];
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen overflow-hidden p-4 bg-gradient-to-br from-pink-100 via-rose-50 to-pink-100 text-rose-900">
+    <div className="relative flex items-center justify-center pt-10 min-h-screen overflow-x-hidden overflow-y-auto p-4 bg-gradient-to-br from-pink-100 via-rose-50 to-pink-100 text-rose-900">
       
       {/* Background Floating Elements Layer */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -278,7 +278,7 @@ const App: React.FC = () => {
               <Heart size={72} className="text-rose-500 fill-rose-400 mx-auto" />
             </MotionDiv>
             
-            <div className="min-h-[4rem] mb-2 flex items-center justify-center">
+            <div className="min-h-[4rem] mb-2 flex items-center justify-center pt-10">
               <TypewriterText 
                 key={`heading-${maybeLevel}`}
                 text={
