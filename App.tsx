@@ -196,7 +196,6 @@ const App: React.FC = () => {
       moveNoButton();
     }, 150);
   };
-  const handleNo = () => setIsDeclined(true);
   const handleStartOver = () => {
     setIsAccepted(false);
     setIsDeclined(false);
@@ -355,9 +354,41 @@ const App: React.FC = () => {
                   {maybeLevel === 0 ? "Maybe? 🤔" : "Still Maybe? 💭"}
                 </MotionButton>
               )}
-              <MotionButton ref={noBtnRef} style={{ position: noButtonState.x === 0 ? 'relative' : 'fixed', left: noButtonState.x !== 0 ? noButtonState.x : 'auto', top: noButtonState.y !== 0 ? noButtonState.y : 'auto', zIndex: 100 }} animate={noButtonState.x !== 0 ? { x: 0, y: 0, rotate: noButtonState.rotate, scale: noButtonState.scale } : {}} transition={{ type: 'spring', stiffness: 400, damping: 25 }} onClick={handleNo} className="clay-btn-no w-full sm:w-auto px-10 py-5 text-white text-xl font-bold rounded-[30px] whitespace-nowrap">
-                No 😜
-              </MotionButton>
+              <MotionButton
+  ref={noBtnRef}
+  style={{
+    position: noButtonState.x === 0 ? 'relative' : 'fixed',
+    left: noButtonState.x !== 0 ? noButtonState.x : 'auto',
+    top: noButtonState.y !== 0 ? noButtonState.y : 'auto',
+    zIndex: 100
+  }}
+  animate={
+    noButtonState.x !== 0
+      ? { x: 0, y: 0, rotate: noButtonState.rotate, scale: noButtonState.scale }
+      : {}
+  }
+  transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+
+  // 🚫 Disable real click
+  onClick={(e) => {
+    e.preventDefault();
+    moveNoButton();
+  }}
+
+  // 📱 Mobile touch escape
+  onTouchStart={(e) => {
+    e.preventDefault();
+    moveNoButton();
+  }}
+
+  // 🖱 Desktop hover escape
+  onMouseEnter={moveNoButton}
+
+  className="clay-btn-no w-full sm:w-auto px-10 py-5 text-white text-xl font-bold rounded-[30px] whitespace-nowrap"
+>
+  No 😜
+</MotionButton>
+
             </div>
 
             <div className="mt-8 pt-6 border-t border-rose-100 flex justify-center gap-8 text-[10px] font-bold text-rose-300 uppercase">
